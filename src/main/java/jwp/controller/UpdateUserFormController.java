@@ -1,36 +1,29 @@
 package jwp.controller;
 
+import core.mvc.Controller;
 import jwp.model.User;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
-@WebServlet("/user/updateForm")
-public class UpdateUserFormController extends HttpServlet {
+public class UpdateUserFormController implements Controller {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
-            response.sendRedirect("/user/login.jsp");
-            return;
+            return "redirect:/";
         }
 
-        User loginUser = (User) session.getAttribute("user");
+        User sessionUser = (User) session.getAttribute("user");
         String userId = request.getParameter("userId");
 
-        if (loginUser.getUserId().equals(userId)) {
-            request.setAttribute("user", loginUser);
-            request.getRequestDispatcher("/user/updateForm.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("/");
+        if (!sessionUser.getUserId().equals(userId)) {
+            return "redirect:/";
         }
+
+        request.setAttribute("user", sessionUser);
+        return "/user/updateForm";
     }
 }

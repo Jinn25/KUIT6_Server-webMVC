@@ -1,28 +1,27 @@
 package jwp.controller;
 
 import core.db.MemoryUserRepository;
+import core.mvc.Controller;
 import jwp.model.User;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet("/user/signup")
-public class CreateUserController extends HttpServlet {
+public class CreateUserController implements Controller {
+
+    private final MemoryUserRepository userRepository = MemoryUserRepository.getInstance();
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        User user = new  User(
-                req.getParameter("userId"),
-                req.getParameter("password"),
-                req.getParameter("name"),
-                req.getParameter("email")
-        );
-        MemoryUserRepository.getInstance().addUser(user);
-        System.out.println("user 회원가입 완료");
-        resp.sendRedirect("/user/list");
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+        String userId = request.getParameter("userId");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+
+        User user = new User(userId, password, name, email);
+        userRepository.addUser(user);
+
+        System.out.println("회원가입 완료: " + userId);
+        return "redirect:/user/list";
     }
 }

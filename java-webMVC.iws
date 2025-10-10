@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76945415-ffe0-43fc-80ec-4e694408abf3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/CreateUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/LogoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-webMVC.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/java-webMVC.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/mvc/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/mvc/DispatcherServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/mvc/RequestMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java-webMVC.iws" beforeDir="false" afterPath="$PROJECT_DIR$/java-webMVC.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/MemoryUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/MemoryUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/CreateUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/CreateUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/LogoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/UpdateUserFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jwp/controller/UserListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jwp/controller/UserListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +90,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,6 +111,9 @@
       <profile-state />
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -118,6 +123,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.WebServerLauncher.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -245,7 +251,7 @@
       <option name="presentableId" value="Default" />
       <updated>1759981805848</updated>
       <workItem from="1759981806642" duration="1714000" />
-      <workItem from="1760014689706" duration="3346000" />
+      <workItem from="1760014689706" duration="5847000" />
     </task>
     <servers />
   </component>

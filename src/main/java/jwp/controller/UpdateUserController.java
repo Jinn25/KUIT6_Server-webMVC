@@ -1,36 +1,25 @@
 package jwp.controller;
 
 import core.db.MemoryUserRepository;
+import core.mvc.Controller;
 import jwp.model.User;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
-@WebServlet("/user/update")
-public class UpdateUserController extends HttpServlet {
+public class UpdateUserController implements Controller {
 
     private final MemoryUserRepository userRepository = MemoryUserRepository.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
-        if (session == null) {
-            response.sendRedirect("/");
-            return;
+        if (session == null || session.getAttribute("user") == null) {
+            return "redirect:/";
         }
 
         User sessionUser = (User) session.getAttribute("user");
-        if (sessionUser == null) {
-            response.sendRedirect("/");
-            return;
-        }
 
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
@@ -38,16 +27,13 @@ public class UpdateUserController extends HttpServlet {
         String email = request.getParameter("email");
 
         if (!sessionUser.getUserId().equals(userId)) {
-            response.sendRedirect("/");
-            return;
+            return "redirect:/";
         }
 
         User updatedUser = new User(userId, password, name, email);
-
         userRepository.changeUserInfo(updatedUser);
-
         session.setAttribute("user", updatedUser);
 
-        response.sendRedirect("/user/list");
+        return "redirect:/user/list";
     }
 }
