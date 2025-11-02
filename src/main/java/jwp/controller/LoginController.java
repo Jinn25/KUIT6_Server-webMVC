@@ -2,6 +2,7 @@ package jwp.controller;
 
 import core.db.MemoryUserRepository;
 import core.mvc.Controller;
+import jwp.dao.UserDao;
 import jwp.model.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,21 +11,20 @@ import javax.servlet.http.HttpSession;
 
 public class LoginController implements Controller {
 
-    private final MemoryUserRepository userRepository = MemoryUserRepository.getInstance();
+    UserDao userDao = new UserDao();
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
-        String userId = request.getParameter("userId");
-        String password = request.getParameter("password");
+    public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        String userId = req.getParameter("userId");
+        String password = req.getParameter("password");
 
-        User user = userRepository.findUserById(userId);
-
+        User user = userDao.findByUserId(userId);
         if (user != null && user.getPassword().equals(password)) {
-            HttpSession session = request.getSession();
+            HttpSession session = req.getSession();
             session.setAttribute("user", user);
             return "redirect:/";
         }
-
-        return "/user/loginFailed";
+        return "redirect:/user/loginFailed";
     }
+
 }

@@ -1,15 +1,17 @@
 package jwp.controller;
 
-import core.db.MemoryUserRepository;
 import core.mvc.Controller;
+import jwp.dao.UserDao;
+import jwp.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class UserListController implements Controller {
 
-    private final MemoryUserRepository userRepository = MemoryUserRepository.getInstance();
+    private final UserDao userDao = new UserDao();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -18,7 +20,10 @@ public class UserListController implements Controller {
             return "redirect:/user/login";
         }
 
-        request.setAttribute("users", userRepository.findAll());
+        List<User> users = userDao.findAll();
+
+        request.setAttribute("users", users);
+
         return "/user/list";
     }
 }
