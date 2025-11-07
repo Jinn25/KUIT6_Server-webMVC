@@ -19,6 +19,6 @@ public class HomeController {
     public String home(Model model) throws SQLException {
         List<Question> questions = questionDao.findAll();
         model.addAttribute("questions", questions);
-        return "/home";
+        return "home";
     }
 }
